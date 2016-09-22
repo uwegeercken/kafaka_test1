@@ -1,4 +1,4 @@
-package com.datamelt.kafka;
+package com.datamelt.kafka.message.flight;
 
 import java.util.HashMap;
 import java.util.List;

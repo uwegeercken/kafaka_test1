@@ -1,6 +1,7 @@
 package com.datamelt.kafka;
 
 import com.datamelt.kafka.message.flight.FlightRecordMessage;
+import com.datamelt.kafka.message.flight.FlightRecordMessageProducer;
 
 public class FlightRecordMessageProducerTest
 {
@@ -13,9 +14,9 @@ public class FlightRecordMessageProducerTest
 		FlightRecordMessage record = new FlightRecordMessage(FlightRecordMessage.TYPE_ARRIVAL);
 		
 		record.addField("APT","ZRH");
-		record.addField("FLC","LX");
-		record.addField("FLN","1072");
-		record.addField("SDT","20160922");
+		record.addField("FLC","TP");
+		record.addField("FLN","344");
+		record.addField("SDT","20160923");
 		
         FlightRecordMessageProducer producer = new FlightRecordMessageProducer(topic);
 		producer.sendMessage(record); 

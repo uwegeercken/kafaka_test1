@@ -1,6 +1,7 @@
 package com.datamelt.kafka;
 
 import com.datamelt.kafka.message.flight.FlightRecordMessage;
+import com.datamelt.kafka.message.flight.FlightRecordMessageConsumer;
 import com.datamelt.kafka.message.flight.MessageEvent;
 
 public class FlightRecordMessageConsumerTest implements MessageEvent

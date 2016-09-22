@@ -1,4 +1,4 @@
-package com.datamelt.kafka;
+package com.datamelt.kafka.message.flight;
 
 import java.io.IOException;
 import java.util.Properties;

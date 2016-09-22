@@ -1,4 +1,4 @@
-package com.datamelt.kafka.message;
+package com.datamelt.kafka.message.test;
 
 import com.datamelt.kafka.message.test.TestMessage;
 

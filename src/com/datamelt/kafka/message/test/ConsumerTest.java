@@ -1,6 +1,6 @@
-package com.datamelt.kafka;
+package com.datamelt.kafka.message.test;
 
-import com.datamelt.kafka.message.MessageEvent;
+import com.datamelt.kafka.message.test.MessageEvent;
 import com.datamelt.kafka.message.test.TestMessage;
 
 public class ConsumerTest implements MessageEvent

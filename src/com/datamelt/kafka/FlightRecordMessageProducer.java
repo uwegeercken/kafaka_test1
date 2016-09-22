@@ -3,14 +3,14 @@ package com.datamelt.kafka;
 import java.io.IOException;
 import java.util.Properties;
 
-import com.datamelt.kafka.message.test.TestMessage;
+import com.datamelt.kafka.message.flight.FlightRecordMessage;
 import com.datamelt.kafka.serializer.MessageSerializer;
 
 import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
-public class MessageProducer
+public class FlightRecordMessageProducer
 {
 	public static final String KEY_METADATA_BROKER_LIST 		= "metadata.broker.list";
 	public static final String KEY_SERIALIZER_CLASS 			= "serializer.class";
@@ -24,13 +24,13 @@ public class MessageProducer
 	private Properties properties = new Properties();
 	private String topic;
 	
-	public MessageProducer(String topic)
+	public FlightRecordMessageProducer(String topic)
 	{
 		this.topic = topic;
 		setDefaultProperties();
 	}
 	
-	public MessageProducer(String topic, Properties properties)
+	public FlightRecordMessageProducer(String topic, Properties properties)
 	{
 		this.topic = topic;
 		this.properties = properties;
@@ -43,12 +43,12 @@ public class MessageProducer
 		properties.put(KEY_REQUEST_REQUIRED_ACKS, DEFAULT_VALUE_REQUEST_REQUIRED_ACKS);
 	}
 
-	private KeyedMessage<Long, byte[]> getKeyedMessage(TestMessage message) throws IOException
+	private KeyedMessage<Long, byte[]> getKeyedMessage(FlightRecordMessage message) throws IOException
 	{
 		return new KeyedMessage<Long, byte[]>(topic, MessageSerializer.serialize(message));
 	}
 	
-	public void sendMessage(TestMessage message) throws IOException
+	public void sendMessage(FlightRecordMessage message) throws IOException
 	{
 		producer = new Producer<Long, byte[]>(new ProducerConfig(properties));
 		producer.send(getKeyedMessage(message)); 

@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import com.datamelt.kafka.message.MessageEvent;
-import com.datamelt.kafka.message.test.TestMessage;
-import com.datamelt.kafka.message.test.TestMessageDecoder;
+import com.datamelt.kafka.message.flight.MessageEvent;
+import com.datamelt.kafka.message.flight.FlightRecordMessage;
+import com.datamelt.kafka.message.flight.FlightRecordMessageDecoder;
 
 import kafka.consumer.Consumer;
 import kafka.consumer.ConsumerConfig;
@@ -16,7 +16,7 @@ import kafka.consumer.KafkaStream;
 import kafka.javaapi.consumer.ConsumerConnector;
 
 
-public class MessageConsumer
+public class FlightRecordMessageConsumer
 {
 	
 	public static final String KEY_ZOOKEEPER_CONNECT	 				= "zookeeper.connect";
@@ -36,7 +36,7 @@ public class MessageConsumer
 	private String groupId;
 	private String topic;
 	
-	public MessageConsumer(MessageEvent event, String groupId, String topic)
+	public FlightRecordMessageConsumer(MessageEvent event, String groupId, String topic)
 	{
 		this.messageEvent = event;
 		this.groupId = groupId;
@@ -44,7 +44,7 @@ public class MessageConsumer
 		setDefaultProperties();
 	}
 	
-	public MessageConsumer(MessageEvent event, String groupId, String topic, Properties properties)
+	public FlightRecordMessageConsumer(MessageEvent event, String groupId, String topic, Properties properties)
 	{
 		this.messageEvent = event;
 		this.topic = topic;
@@ -89,8 +89,8 @@ public class MessageConsumer
               
                while (consumerIte.hasNext())
                {
-            	   TestMessageDecoder decoder = new TestMessageDecoder(null);
-            	   TestMessage message = (TestMessage) decoder.fromBytes(consumerIte.next().message());
+            	   FlightRecordMessageDecoder decoder = new FlightRecordMessageDecoder(null);
+            	   FlightRecordMessage message = (FlightRecordMessage) decoder.fromBytes(consumerIte.next().message());
             	   
             	   // fire event
             	   messageEvent.processMessage(message);
